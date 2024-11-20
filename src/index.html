@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Head content remains the same -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Weather App</title>
@@ -26,9 +27,9 @@
 
 <body class="bg-gray-100 min-h-screen p-2 se:p-4">
     <div class="container mx-auto max-w-6xl">
-        <div class="bg-white rounded-xl shadow-lg p-3 se:p-4 ipad:p-6 grid ipad:grid-cols-2 gap-4 ipad:gap-6">
+        <div class="bg-white rounded-xl shadow-lg p-3 se:p-4 ipad:p-6 space-y-4 ipad:space-y-6">
             <!-- Weather Input Section -->
-            <div class="weather-input space-y-4 se:space-y-6">
+            <div class="weather-input space-y-4 se:space-y-6 ipad:max-w-md mx-auto">
                 <!-- Search Bar -->
                 <div class="input-group relative">
                     <input type="text" name="" id="userLocation"
@@ -56,7 +57,7 @@
 
                 <!-- Current Weather Display -->
                 <div class="text-center space-y-3 se:space-y-4">
-                    <div class="weatherIcon w-16 h-16 se:w-24 se:h-24 bg-center bg-no-repeat bg-contain mx-auto"></div>
+                    <div class="weatherIcon w-16 h-16 bg-center bg-no-repeat bg-contain mx-auto"></div>
                     <h2 class="temperature text-3xl se:text-4xl font-bold"></h2>
                     <div class="feelslike text-sm se:text-base text-gray-600"></div>
                     <div class="description text-base se:text-lg flex items-center justify-center gap-2"></div>
@@ -66,28 +67,27 @@
                 </div>
             </div>
 
-            <!-- Weather Output Section -->
-            <div class="weather-output space-y-4 se:space-y-6">
-                <h2 class="heading text-xl se:text-2xl font-bold">Today's Highlights</h2>
-
+            <!-- Today's Highlights Section -->
+            <div class="weather-highlights">
+                <h2 class="heading text-xl se:text-2xl font-bold mb-4">Today's Highlights</h2>
                 <!-- Highlights Grid -->
-                <div class="Hightlights grid grid-cols-1 se:grid-cols-2 gap-3 se:gap-4">
+                <div class="Hightlights grid grid-cols-1 se:grid-cols-2 ipad:grid-cols-3 gap-3 se:gap-4">
                     <!-- Humidity -->
-                    <div class="humidity bg-gray-50 p-3 se:p-4 rounded-lg text-sm se:text-base">
+                    <div class="humidity bg-blue-50 p-3 se:p-4 rounded-lg text-sm se:text-base">
                         Humidity
                         <i class="fa-solid fa-water text-blue-500"></i>
                         <h1 id="HValue" class="text-xl se:text-2xl font-bold mt-2"></h1>
                     </div>
 
                     <!-- Wind Speed -->
-                    <div class="wind-speed bg-gray-50 p-3 se:p-4 rounded-lg text-sm se:text-base">
+                    <div class="wind-speed bg-blue-50 p-3 se:p-4 rounded-lg text-sm se:text-base">
                         Wind Speed
                         <i class="fa-solid fa-wind text-blue-500"></i>
                         <h1 id="WValue" class="text-xl se:text-2xl font-bold mt-2"></h1>
                     </div>
 
                     <!-- Sun Info -->
-                    <div class="sun bg-gray-50 p-3 se:p-4 rounded-lg text-sm se:text-base">
+                    <div class="sun bg-blue-50 p-3 se:p-4 rounded-lg text-sm se:text-base">
                         <div class="grid grid-cols-2 gap-2">
                             <span class="sunrise">
                                 <i class="fa-solid fa-sun text-yellow-500"></i>
@@ -101,42 +101,44 @@
                     </div>
 
                     <!-- Clouds -->
-                    <div class="Clouds bg-gray-50 p-3 se:p-4 rounded-lg text-sm se:text-base">
+                    <div class="Clouds bg-blue-50 p-3 se:p-4 rounded-lg text-sm se:text-base">
                         Clouds
                         <i class="fa-solid fa-cloud text-gray-500"></i>
                         <h1 id="CValue" class="text-xl se:text-2xl font-bold mt-2"></h1>
                     </div>
 
                     <!-- UV Index -->
-                    <div class="uv-index bg-gray-50 p-3 se:p-4 rounded-lg text-sm se:text-base">
+                    <div class="uv-index bg-blue-50 p-3 se:p-4 rounded-lg text-sm se:text-base">
                         UV Index
                         <i class="fa-solid fa-bacon text-purple-500"></i>
                         <h1 id="UVValue" class="text-xl se:text-2xl font-bold mt-2"></h1>
                     </div>
 
                     <!-- Pressure -->
-                    <div class="pressure bg-gray-50 p-3 se:p-4 rounded-lg text-sm se:text-base">
+                    <div class="pressure bg-blue-50 p-3 se:p-4 rounded-lg text-sm se:text-base">
                         Pressure
                         <i class="fa-solid fa-volcano text-red-500"></i>
                         <h1 id="PValue" class="text-xl se:text-2xl font-bold mt-2"></h1>
                     </div>
                 </div>
+            </div>
 
-                <!-- Forecast Section -->
-                <h2 class="heading text-xl se:text-2xl font-bold">This Week</h2>
-                <div class="Forecast grid grid-cols-1 se:grid-cols-2 ipad:grid-cols-3 gap-3 se:gap-4"></div>
+            <!-- Forecast Section - Now after highlights -->
+            <div class="weather-forecast">
+                <h2 class="heading text-xl se:text-2xl font-bold mb-4">This Week</h2>
+                <div class="Forecast flex overflow-x-auto gap-3 se:gap-4 pb-4"></div>
+            </div>
 
-                <!-- Footer -->
-                <div class="footer-div mt-6 se:mt-8 border-t pt-4">
-                    <ul class="flex justify-center space-x-4 se:space-x-6 text-sm se:text-base">
-                        <li><a href="mailto:itispavan24@gmail.com" class="text-blue-500 hover:underline">Email</a></li>
-                        <li><a href="https://github.com/PYTHON09-ux/Weather-Forecasting-App" target="_blank"
-                                class="text-blue-500 hover:underline">Github</a></li>
-                        <li>
-                            <p>👋</p>
-                        </li>
-                    </ul>
-                </div>
+            <!-- Footer -->
+            <div class="footer-div mt-6 se:mt-8 border-t pt-4">
+                <ul class="flex justify-center space-x-4 se:space-x-6 text-sm se:text-base">
+                    <li><a href="mailto:itispavan24@gmail.com" class="text-blue-500 hover:underline">Email</a></li>
+                    <li><a href="https://github.com/PYTHON09-ux/Weather-Forecasting-App" target="_blank"
+                            class="text-blue-500 hover:underline">Github</a></li>
+                    <li>
+                        <p>👋</p>
+                    </li>
+                </ul>
             </div>
         </div>
     </div>

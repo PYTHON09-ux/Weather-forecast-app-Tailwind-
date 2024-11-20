@@ -127,6 +127,7 @@ function updateWeatherUI(data) {
     // Update current weather
     city.innerHTML = `${data.location.name},&nbsp${data.location.region},&nbsp${data.location.country}`;
     weatherIcon.style.background = `url(${data.current.condition.icon})`;
+    weatherIcon.classList.add("object-cover")
     date.innerHTML = `${convertDateFormat(data.location.localtime)}`;
 
     let temp = tempconvertor(data.current.temp_c, data.current.temp_f);
@@ -146,16 +147,19 @@ function updateWeatherUI(data) {
     PValue.innerHTML = `${data.current.pressure_mb}<span class="text-sm"> mb</span>`;
 
     data.forecast.forecastday.slice(1).forEach(element => {
+        console.log(element)
         const div = document.createElement("div");
-        div.className = "bg-gray-50 p-3 se:p-4 rounded-lg";
+        div.className = "bg-blue-50 p-3 se:p-4 rounded-lg";
         div.innerHTML = `
-            <p class="text-gray-600 text-sm se:text-base">${convertDateFormat(element.date).split("", 11).join("")}</p>
+            <p class="text-gray-600 text-sm se:text-base text-center">${convertDateFormat(element.date).split("", 11).join("")}</p>
             <img src="${element.day.condition.icon}" class="w-12 h-12 se:w-16 se:h-16 mx-auto my-2"/>
-            <p class="text-xs se:text-sm text-gray-700 mb-2">${element.day.condition.text}</p>
+            <p class="text-xs se:text-sm text-center text-gray-700 mb-2">${element.day.condition.text}</p>
             <div class="flex justify-between text-xs se:text-sm">
-                <span>Min ${tempconvertor(element.day.mintemp_c, element.day.mintemp_f)}</span>
-                <span>Max ${tempconvertor(element.day.maxtemp_c, element.day.maxtemp_f)}</span>
+                <span>  <span class="font-bold">Min</span> ${tempconvertor(element.day.mintemp_c, element.day.mintemp_f)}</span>
+                <span> <span class="font-bold">Max</span> ${tempconvertor(element.day.maxtemp_c, element.day.maxtemp_f)}</span>
             </div>
+             <p class="text-xs se:text-sm text-left mb-2"> <span class="font-bold"> Humidity </span> ${element.day.avghumidity}</p>
+             <p class="text-xs se:text-sm text-left mb-2"> <span class="font-bold">Wind </span>${element.day.maxwind_mph}</p>
         `;
         Forecast.appendChild(div);
     });
