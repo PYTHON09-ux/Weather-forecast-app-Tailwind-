@@ -1,0 +1,476 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components{
+    @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+* {
+  margin: 0px;
+  padding: 0px;
+  font-family: "Poppins", sans-serif;
+  box-sizing: border-box;
+}
+
+
+
+body{
+  height: 100vh;
+  overflow-x: hidden;
+}
+
+.container{
+  display: flex;
+  align-items: center;
+}
+
+
+
+.weather-input{
+  width: 30%;
+  position: fixed;
+  inset: 0;
+  background: rgb(255, 255, 255);
+  padding: 1rem 2.5rem;
+}
+
+
+.input-group{
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin:2rem 0;
+}
+
+
+.input-group input{
+  background: white;
+  text-transform: capitalize;
+  padding: 1rem;
+  padding-left: 2.4rem;
+  font-size: 15px;
+  border-radius: 17px;
+  width: 100%;
+}
+
+
+
+.input-group .converter{
+  position: absolute;
+  right:45px;
+  border: none;
+  outline:none;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+
+.input-group .fa-search{
+  position: absolute;
+  right: 15px;
+  /* background-color: black; */
+  color: red;
+  cursor: pointer;
+  font-size: 22px;
+}
+
+.input-group .fa-location-crosshairs{
+  position: absolute;
+  left: 0.5rem;
+  font-size: 1.3rem;
+  cursor: pointer;
+}
+
+.input-group .fa-location-crosshairs:hover{
+  color: blue;
+}
+
+
+.weatherIcon{
+  background-position:50% !important;
+  background-repeat: no-repeat !important;
+  background-size: contain;
+  display: block;
+  height: 20%;
+  margin: 2rem auto ;
+}
+
+
+.weather-input .feelslike,
+.weather-input .description,
+.weather-input .date,
+.weather-input .city{
+  padding:10px 0;
+}
+
+
+.temperature{
+  font-size: 5.2rem;
+  text-align: center;
+  display: flex;
+  font-weight: 300; ;
+}
+
+
+/* ----------------------------- Media Queries for ipad Mini --------------------------------- */
+
+@media screen and (max-width: 768px) and (max-width: 1025px){
+  .container{
+    flex-direction: column;
+  }
+  .weather-input{
+    width: 100%;
+    position: static;
+    inset: 0;
+    background: rgb(255, 255, 255);
+    padding: 1rem 2.5rem;
+  }
+
+  .input-group {
+    display: flex;
+    justify-content: start;
+  }
+  .input-group input{
+    width: 40%;
+  }
+
+  .input-group .converter{
+    position: static;
+    font-size: 18px;
+  }
+
+  .input-group .fa-search{
+    position: static;
+    margin-left: 1rem;
+    font-size: 22px;
+  }
+
+  .weatherIcon{
+    position: absolute;
+    z-index: 3;
+    right: 10rem;
+    height:10rem;
+    width: 10rem;
+    margin: 0 auto ;
+  }
+  
+}
+
+
+/* -------------------for iphone se ---------------------------- */
+@media screen and (min-width: 0px) and (max-width: 377px){
+
+  #userLocation{
+    width:100% !important;
+  }
+
+  .weatherIcon{
+    position: static;
+    height:4rem;
+    margin-bottom: 1rem;
+  }
+
+  .temperature{
+    font-size: 3.2rem;
+    text-align: center;
+    display: flex;
+    font-weight: 300; ;
+  }
+
+  /* .weather-input{
+    width: 30%;
+    position: fixed;
+    inset: 0;
+    background: rgb(255, 255, 255);
+    padding: 1rem 2.5rem;
+  } */
+
+
+}
+
+
+
+
+/* ---------------------------- right side div styling -------------------------------------- */
+.weather-output{
+  width: 80%;
+  position: relative;
+  inset: 0;
+  margin-left:28%;
+  padding: 2rem 2rem 0  ;
+  background: rgba(212, 212, 212, 0.707);
+  overflow: auto;
+}
+
+.weather-output .heading{
+  text-align: start;
+  padding-bottom: 1rem;
+  padding-left: 2rem;
+  color: rgb(35, 34, 34);
+}
+
+.Hightlights{
+  display: grid;
+  grid-template-columns: repeat(3, 330px);
+  grid-auto-flow: row;
+  grid-gap: 1rem;
+  column-gap: 10px;
+}
+
+
+.Hightlights div{
+  height: 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(30, 96, 250);
+  color: white;
+  border-radius: 20px;
+  gap: 0.7rem;
+  padding: 1.7rem;
+}
+
+
+.Hightlights i {
+  font-size: 35px;
+}
+
+.sun span {
+  display: flex;
+  flex-direction:row;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 10px;
+}
+.sun .sunrise i{
+  color: rgb(255, 115, 0);
+}
+
+.sun .sunset i{
+  color: rgb(31, 29, 27);
+}
+
+
+/* ---------------------------Media Queris for Right Side Div-------------------------------------- */
+
+@media screen and (min-width: 768px) and (max-width:1025px){
+
+  .weather-output{
+    width: 100%;
+    position: static; 
+    margin-left:0%;
+  }
+
+  .Hightlights{
+    display: grid;
+    grid-template-columns: repeat(3, 230px);
+  }
+
+  .Hightlights i {
+    font-size: 35px;
+  }
+
+}
+
+
+/* ---------------for iphone se----------------------- */
+  @media screen and (min-width: 0px) and (max-width: 377px){
+
+    .Hightlights i {
+      font-size: 20px;
+    }
+    .weather-output{
+      width: 100%;
+      position: static; 
+      /* padding-top: 40vh; */
+      margin-left:0%;
+    }
+    .Hightlights{
+      display: grid;
+      grid-template-columns: repeat(2, 150px);
+    }
+
+    .Hightlights .humidity, #HValue,
+    .wind-speed, #WValue,
+    .surise .sunset, #SSValue, #SRValue,
+    .Clouds, #CValue,
+    .uv-index ,#UVValue,
+    .pressure, #PValue{
+     font-size: small;
+    }
+  }
+
+
+/* ------------------------forecast div styling------------------------------------------ */
+
+.Forecast{
+  display: grid;
+  grid-template-columns: repeat(7,140px);
+  grid-template-rows: repeat(2,200px);
+  grid-auto-flow:row;
+  row-gap: 1rem;
+  column-gap:10px;
+  }
+
+  .Forecast div{
+    height: 250px;
+    color: white;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(30, 96, 250);
+    border-radius: 20px;
+    padding: 1.3rem;
+  }
+
+  .forecast-des{
+    color: #c3c1c1;
+    font-size: 0.8rem;
+    text-align: center;
+    padding-bottom: 5px;
+    font-style: italic;
+  }
+
+  .forecast-temp-diff span{
+    display: inline-block;
+    padding: 0.4rem;
+  }
+
+  .forecast-child-divs{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .forecast-child-divs img{
+    margin: auto;
+  }
+
+  .forecast-date{
+    font-size: small;
+  }
+
+  .forecast-temp-diff span{
+    display: flex;
+    flex-direction: row;
+    font-size: small;
+  }
+
+  /* --------------footer---------------------- */
+
+  .footer-div {
+    display: flex;
+    width: 100%;
+    height: 3rem;
+    background-color: #777779;
+    line-height: 1.3;
+    font-family: Menlo, monospace;
+  }
+
+  .footer-div ul {
+    display: inline-grid;
+    grid-auto-flow: row;
+    grid-gap: 24px;
+    list-style-type: none;
+    justify-items: center;
+    margin: auto;
+  }
+  
+  @media (min-width: 500px) {
+    .footer-div ul {
+      grid-auto-flow: column;
+    }
+  }
+  
+  .footer-div a {
+    color: white;
+    text-decoration: none;
+    box-shadow: inset 0 -1px 0 hsla(0, 0%, 100%, 0.4);
+  }
+  
+  
+  .footer-div a:hover {
+    box-shadow: inset 0 -1.2em 0 hsla(0, 0%, 100%, 0.4);
+  }
+  
+  .footer-div li:last-child {
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+  }
+  
+  .footer-div li:hover ~ li p {
+    animation: wave-animation 0.3s infinite;
+  }
+  
+  /* below is just for demo styling */
+  
+ 
+  
+  @keyframes wave-animation {
+    0%,
+    100% {
+      transform: rotate(0deg);
+    }
+    25% {
+      transform: rotate(20deg);
+    }
+    75% {
+      transform: rotate(-15deg);
+    }
+  }
+  
+
+
+  /* -------------------Media Queries for forecast div --------------------------------- */
+
+  @media screen and (max-width: 768px){
+
+    .Forecast{
+      display: grid;
+      height: 50vh;
+      grid-template-columns: repeat(4,160px);
+      grid-template-rows: repeat(2,140px);
+      grid-auto-flow:row;
+      row-gap: 8rem;
+      column-gap:10px;
+      }
+
+      .footer-div {
+        margin-top: 4rem;
+      }
+  }
+
+
+  /* ---------------for iphone se----------------------- */
+  @media screen and (min-width: 0px) and (max-width: 377px){
+
+    .Forecast{
+      display: grid;
+      height: 0;
+      grid-template-columns: repeat(2,150px);
+      grid-template-rows: repeat(2,240px);
+      grid-auto-flow:row;
+      row-gap: 1rem;
+      column-gap:10px;
+      }
+
+
+      .footer-div{
+        position: absolute;
+        margin: 1rem 0;
+        left: 0%;
+      }
+
+      .forecast-date{
+        font-size: 0.7rem;
+      }
+      .footer-div ul{
+        display: flex;
+        /* margin: 1rem 0; */
+      }
+
+
+  }
+}
