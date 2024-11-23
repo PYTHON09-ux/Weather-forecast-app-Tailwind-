@@ -85,10 +85,17 @@ function getCityName() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(async (position) => {
             const { latitude, longitude } = position.coords;
-            const apiUrl = `https://nominatim.openstreetmap.org/reverse?lat=${latitude}&lon=${longitude}&format=json`;
-
+            // Add accept-language parameter and preferred language parameter
+            const apiUrl = `https://nominatim.openstreetmap.org/reverse?lat=${latitude}&lon=${longitude}&format=json&accept-language=en&preferred_language=en`;
+            
             try {
-                const response = await fetch(apiUrl);
+                const response = await fetch(apiUrl, {
+                    headers: {
+                        // Add Accept-Language header to request English
+                        'Accept-Language': 'en'
+                    }
+                });
+                
                 if (!response.ok) throw new Error('Failed to fetch location');
                 const data = await response.json();
                 const city = data.address.city || data.address.town || data.address.village || "City not found";
